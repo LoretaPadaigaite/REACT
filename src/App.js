@@ -1,10 +1,15 @@
-import { Greeting } from './Greeting/Greeting';
+
+import { HomePage } from './HomePage/HomePage';
+import { ContactsPage } from './ContactsPage/ContactsPage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Greeting isLoggedIn={false} unreadMessages={[1, 1, 1]} />
+
+    <HomePage />
+    <ContactsPage/>
+    
     </div>
   );
 }

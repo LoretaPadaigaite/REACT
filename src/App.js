@@ -1,15 +1,23 @@
 
-import { HomePage } from './HomePage/HomePage';
-import { ContactsPage } from './ContactsPage/ContactsPage';
+import { Counter } from './Counter/Counter';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  
+const [isCounterVisible, setIsCounterVisible] = useState(true);
+const handelToggleCounter = () => {
+  setIsCounterVisible(!isCounterVisible);
+}
+
   return (
     <div className="App">
 
-    <HomePage />
-    <ContactsPage/>
-    
+
+    <button onClick={handelToggleCounter}>Toggle Counter</button>
+
+     {isCounterVisible &&  <Counter/>}
+  
     </div>
   );
 }

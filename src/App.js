@@ -3,53 +3,41 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
 
-  
+  const [posts, setPosts] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
   useEffect(() => {
-    console.log('COMPONENT Mounted')
-  }, [count]);
-
-  const handleIncrement = (event) => {
-    console.log(event)
-    setCount(count + 1)
-  }
-  const handleIncrementKeyDown = (event) => {
-    console.log('KEY DOWN')
-    console.log(event)
-  }
-  const handleIncrementKeyUp = (event) => {
-    console.log('KEY UP')
-    console.log(event)
-  }
+    fetch ('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => res.json())
+    .then((data) => {
+      setPosts(data);
+    })
+  }, []);
 
   const handleInputChange = (event) => {
-    console.log('INPUT Value CHANGE')
+    const value = event.target.value;
+    setInputValue(value)
     console.log(event.target.value)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('SUBMIT')
-  }
 
   return (
     <div className="App">
 
-      <form onSubmit={handleSubmit}>
-      {count}
-      <button 
-        onKeyUp={handleIncrementKeyUp} 
-        onKeyDown={handleIncrementKeyDown} 
-        onClick={handleIncrement}
-      >
-        Increment
-      </button>
+    <input onChange={handleInputChange}/>
 
-      <input onChange={handleInputChange} />
+    {posts
+    .filter((post) => {
+      return post.title.indexOf(inputValue) >= 0
+    })
+    .map((post) => (
+      <div key={post.id}>
+        <h2>{post.title}</h2>
+        <p>{post.body}</p>
+      </div>
+    ))}
 
-</form>
-  
     </div>
   );
 }

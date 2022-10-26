@@ -1,42 +1,24 @@
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { useEffect, useState } from 'react';
+import { HomePage } from './views/HomePage/HomePage';
+import {AboutPage} from './views/AboutPage/AboutPage';
+import { ContactsPage } from './views/ContactsPage/ContactsPage';
+import {Navigation} from './components/Navigation/Navigation'
+
 
 function App() {
-
-  const [posts, setPosts] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  useEffect(() => {
-    fetch ('https://jsonplaceholder.typicode.com/posts')
-    .then((res) => res.json())
-    .then((data) => {
-      setPosts(data);
-    })
-  }, []);
-
-  const handleInputChange = (event) => {
-    const value = event.target.value;
-    setInputValue(value)
-    console.log(event.target.value)
-  }
-
 
   return (
     <div className="App">
 
-    <input onChange={handleInputChange}/>
+      <Navigation/>
 
-    {posts
-    .filter((post) => {
-      return post.title.indexOf(inputValue) >= 0
-    })
-    .map((post) => (
-      <div key={post.id}>
-        <h2>{post.title}</h2>
-        <p>{post.body}</p>
-      </div>
-    ))}
+      <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/about' element={<AboutPage/>} />
+        <Route path='/contacts' element={<ContactsPage/>}/>
+      </Routes>
 
     </div>
   );

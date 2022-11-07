@@ -1,6 +1,6 @@
 import styles from './contactsPage.module.scss'
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
     return (
         <>
         <h1 className={styles.title}>CONTACTS</h1>
@@ -13,3 +13,4 @@ export const ContactsPage = () => {
 
     )
 }
+export default ContactsPage;

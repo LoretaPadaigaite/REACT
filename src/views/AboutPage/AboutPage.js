@@ -5,7 +5,7 @@ const Title = styled.h1`
     color: salmon;
 `
 
-export const AboutPage = () => {
+const AboutPage = () => {
     return (
         <div className={styles.fonas}>
             {/*<h1 className={styles['title']}>Tai ABOUT puslapis</h1>*/}
@@ -13,3 +13,4 @@ export const AboutPage = () => {
             </div>
     )
 }
+export default AboutPage;

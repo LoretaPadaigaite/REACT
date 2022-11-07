@@ -1,6 +1,7 @@
 import styles from './HomePage.module.scss';
 
-export const HomePage = () => {
+
+const HomePage = () => {
     return (
         <div  style={{ color: 'pink', 
         backgroundColor: 'black', 
@@ -10,3 +11,4 @@ export const HomePage = () => {
     )
 }
 
+export default HomePage;

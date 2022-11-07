@@ -22,6 +22,8 @@ export const Navigation = ({ onLogout }) => {
             {/* {location.pathname !== '/' && <Link to="/">Home</Link>} */}
             <Link to="/">Home</Link>
             <Link to="/contacts">Contacts</Link>
+            <Link to="/about">About</Link>
+
             <button onClick={handleLogout}>Logout</button>
         </div>
     )
